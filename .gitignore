@@ -76,3 +76,5 @@ yarn-error.log
 # Coverage reports
 coverage/
 .nyc_output/
+
+.next
