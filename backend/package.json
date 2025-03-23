@@ -1,0 +1,21 @@
+{
+    "name": "secure-code-analyzer-backend",
+    "version": "1.0.0",
+    "description": "Backend for Secure Code Analyzer running in TEE",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "build-binary": "pkg -t node14-alpine app.js -o app"
+    },
+    "keywords": ["security", "code-analysis", "tee", "llm"],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "cors": "^2.8.5",
+      "express": "^4.18.2",
+      "node-fetch": "^2.6.7"
+    },
+    "devDependencies": {
+      "pkg": "^5.8.1"
+    }
+  }

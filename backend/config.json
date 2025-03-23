@@ -1,0 +1,24 @@
+{
+    "caddy": {
+      "url": "",
+      "caddyfile": ""
+    },
+    "params": {
+      "NILAI_API_URL": "https://nilai-a779.nillion.network/v1",
+      "NILAI_API_KEY": "YOUR_NILAI_API_KEY"
+    },
+    "service_commands": [
+      {
+        "name": "code_analyzer",
+        "command": "/app/mount/app", 
+        "build_commands": [
+          ""
+        ],
+        "ports": [4000],
+        "env": {
+          "NILAI_API_URL": "${NILAI_API_URL}",
+          "NILAI_API_KEY": "${NILAI_API_KEY}"
+        }
+      }
+    ]
+  }
