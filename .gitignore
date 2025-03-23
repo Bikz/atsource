@@ -1,2 +1,78 @@
+# Dependencies
 node_modules/
+/.pnp
+.pnp.js
+.yarn/
+yarn-error.log
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+.swc/
+next-env.d.ts
+
+# Production
+/build
+/dist
+/app
+
+# Environment files
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated files
+*.tsbuildinfo
+
+# Marlin TEE files
+/backend/app
+/enclave
+
+# Next.js standalone output
+.next
+frontend/.next/
+frontend/out/
+
+# Local Netlify folder
+.netlify
+
+# Vercel
+.vercel
+
+# Docker volumes
+data/
+
+# Temp files
+.temp
+.tmp
+*.swp
+*.swo
+
+# Package manager error logs
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Coverage reports
+coverage/
+.nyc_output/
