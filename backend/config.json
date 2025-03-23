@@ -17,7 +17,8 @@
         "ports": [4000],
         "env": {
           "NILAI_API_URL": "${NILAI_API_URL}",
-          "NILAI_API_KEY": "${NILAI_API_KEY}"
+          "NILAI_API_KEY": "${NILAI_API_KEY}",
+          "PORT": "4000"
         }
       }
     ]
