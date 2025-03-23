@@ -1,12 +1,12 @@
-// services/codeAnalysis.js - Service to analyze code with OpenAI
+// services/codeAnalysis.js - Service to analyze code with SecretLLM
 const fetch = require('node-fetch');
 
 // Environment variables
-const OPENAI_API_URL = process.env.OPENAI_API_URL || 'https://api.openai.com/v1';
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || 'your-api-key'; // Replace with your actual key
+const NILAI_API_URL = process.env.NILAI_API_URL || 'https://nilai-a779.nillion.network/v1';
+const NILAI_API_KEY = process.env.NILAI_API_KEY || 'Nillion2025'; // Test key, replace with your actual key
 
 /**
- * Analyzes code for vulnerabilities using OpenAI
+ * Analyzes code for vulnerabilities using SecretLLM
  * @param {string} code - The code to analyze
  * @param {string} language - The programming language
  * @returns {Object} - Analysis results with a signature
@@ -57,15 +57,15 @@ Respond in valid JSON format with the schema:
 }
 `;
 
-    // Call the OpenAI API
-    const response = await fetch(`${OPENAI_API_URL}/chat/completions`, {
+    // Call the SecretLLM API
+    const response = await fetch(`${NILAI_API_URL}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
+        'Authorization': `Bearer ${NILAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+        model: 'meta-llama/Llama-3.1-8B-Instruct',
         messages: [
           {
             role: 'user',
@@ -78,7 +78,7 @@ Respond in valid JSON format with the schema:
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(`OpenAI API error: ${JSON.stringify(errorData)}`);
+      throw new Error(`SecretLLM API error: ${JSON.stringify(errorData)}`);
     }
 
     const data = await response.json();
@@ -97,19 +97,16 @@ Respond in valid JSON format with the schema:
       };
     }
 
-    // Generate a simple "signature" (this is just for demo purposes)
-    const signature = generateDemoSignature();
-
-    // Return the analysis with the demo signature
+    // Return the analysis with the signature from SecretLLM
     return {
       analysis: analysisResult,
-      signature: signature,
+      signature: data.signature,
       timestamp: new Date().toISOString(),
       code_hash: hashCode(code), // Simplified - in production use a proper hash function
       meta: {
         code_length: code.length,
         language: language,
-        model_used: 'gpt-3.5-turbo'
+        model_used: 'meta-llama/Llama-3.1-8B-Instruct'
       }
     };
   } catch (error) {
@@ -129,15 +126,6 @@ function hashCode(str) {
     hash |= 0; // Convert to 32bit integer
   }
   return hash.toString(16); // Convert to hex
-}
-
-/**
- * Generate a demo signature for demonstration purposes
- * In a real TEE application, this would be a cryptographic signature
- */
-function generateDemoSignature() {
-  return 'demo-' + Math.random().toString(36).substring(2, 15) + 
-         Math.random().toString(36).substring(2, 15);
 }
 
 module.exports = {

@@ -109,7 +109,7 @@ export default function Home() {
       </div>
 
       <footer className="mt-8 pt-4 border-t border-gray-200 text-center text-gray-500">
-        <p>Powered by Nillion SecretLLM & Marlin Oyster</p>
+        <p>Powered by Nillion SecretLLM & Marlin TEE</p>
       </footer>
     </div>
   );
